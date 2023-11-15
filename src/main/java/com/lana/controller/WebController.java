@@ -58,7 +58,11 @@ public class WebController {
 		return getPetitionsPage();
 	}
 
-
+	@PostMapping({ "/signPetition" })
+	public ModelAndView signPetition(@ModelAttribute("signature") Signature signature) {
+		cache.addSignature(signature);
+		return getPetitionsPage();
+	}
 	
 
 }
