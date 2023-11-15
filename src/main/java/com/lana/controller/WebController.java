@@ -22,8 +22,15 @@ public class WebController {
 	private static final String KEY_SIGNATURE = "signature";
 	private static final String PAGE_HOME = "home";
 
-
-	
+	@GetMapping({ "/", "/home" })
+	public ModelAndView getPetitionsPage() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject(KEY_PETITIONS, cache.getAllPetitions());
+		modelAndView.setViewName(PAGE_HOME);
+		Petition petition = new Petition();
+		modelAndView.addObject(KEY_PETITION, petition);
+		return modelAndView;
+	}
 
 	@GetMapping({ "/create" })
 	public String createPetitionPage(Model model) {
