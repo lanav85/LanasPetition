@@ -51,6 +51,13 @@ public class WebController {
 		return modelAndView;
 	}
 
+	@PostMapping({ "/submitPetition" })
+	public ModelAndView submitPetition(@ModelAttribute("petition") Petition petition) {
+		petition.generateRandomPetitionId();
+		cache.addPetition(petition);
+		return getPetitionsPage();
+	}
+
 
 	
 
