@@ -39,6 +39,19 @@ public class WebController {
 		return "create";
 	}
 
+	@GetMapping(value = "/view")
+	public ModelAndView viewPetitionPage(@RequestParam("id") Long petitionId) {
+		ModelAndView modelAndView = new ModelAndView();
+		Signature signature = new Signature();
+		Petition petition = cache.getPetition(petitionId);
+		modelAndView.addObject(KEY_PETITION, petition);
+		modelAndView.addObject(KEY_SIGNATURES, cache.getSignatures(petitionId));
+		modelAndView.addObject(KEY_SIGNATURE, signature);
+		modelAndView.setViewName("view");
+		return modelAndView;
+	}
+
+
 	
 
 }
