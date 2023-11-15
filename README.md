@@ -1,0 +1,2 @@
+# LanasPetition
+CLOUD DEVOPS ASSINGMENT 
